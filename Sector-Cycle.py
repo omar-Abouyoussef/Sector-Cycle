@@ -63,9 +63,12 @@ def factor_model(df):
     return factors
 
 def plot(factors):
+    
+    series = savgol_filter(zscore((factors*-1),window_length=5,polyorder=1)
+
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=factors.index, y=zscore((factors*-1).sum(axis=1)),mode='lines',line=dict(color='black', width=1)))
+        x=factors.index, y=series.sum(axis=1)),mode='lines',line=dict(color='black', width=1)))
     
     fig.update_layout(
     title=dict(text="Sector Cycle"))
