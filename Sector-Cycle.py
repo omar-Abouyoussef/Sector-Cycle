@@ -77,7 +77,7 @@ def plot(factors):
     return fig
 
 def main(sector_name):
-    date = dt.date.today()
+    date = dt.today().date()
     ma5, ma20, ma50, ma100, ma200 = get_data(sector_name=sector_name,date=date)
     df_smoothed = preprocessing(ma5, ma20, ma50, ma100, ma200,filter_window=30,filter_polyorder=3)
     factors = factor_model(df=df_smoothed)
