@@ -65,9 +65,6 @@ def factor_model(df):
 def plot(factors):
     
     series = zscore(factors*-1).sum(axis=1)
-    smoothed = savgol_filter(series,window_length=10,polyorder=1)
-    smoothed = savgol_filter(smoothed,window_length=10,polyorder=1)
-
 
     
     fig = go.Figure()
