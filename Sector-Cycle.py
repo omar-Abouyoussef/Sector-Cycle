@@ -11,8 +11,10 @@ from scipy.stats import zscore
 import streamlit as st
 
 
+
 @retry((Exception), tries=10, delay=1, backoff=0)
-def get_index_data(sector, suffix,n,freq):
+@st.cache_data
+def get_index_data(sector, suffix,n,freq,date):
     tv = TvDatafeed()
     response = tv.get_hist(symbol=f'{sector}{suffix}',
                     exchange='INDEX',interval=freq,
@@ -75,7 +77,8 @@ def plot(factors):
     return fig
 
 def main(sector_name):
-    ma5, ma20, ma50, ma100, ma200 = get_data(sector_name=sector_name)
+    date = dt.datetime.today()
+    ma5, ma20, ma50, ma100, ma200 = get_data(sector_name=sector_name,date)
     df_smoothed = preprocessing(ma5, ma20, ma50, ma100, ma200,filter_window=30,filter_polyorder=3)
     factors = factor_model(df=df_smoothed)
     fig = plot(factors=factors)
