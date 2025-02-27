@@ -68,7 +68,7 @@ def plot(factors):
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=factors.index, y=series.sum(axis=1),mode='lines',line=dict(color='black', width=1)))
+        x=factors.index, y=series,mode='lines',line=dict(color='black', width=1)))
     
     fig.update_layout(
     title=dict(text="Sector Cycle"))
