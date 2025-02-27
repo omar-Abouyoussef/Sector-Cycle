@@ -95,7 +95,8 @@ class App():
                      )
 
         self.sector = sector_symbol
-        main(self.sector)
+        fig = main(self.sector)
+        st.plotly_chart(fig)
     
 app = App()
 app.run()
