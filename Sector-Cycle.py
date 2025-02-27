@@ -30,7 +30,7 @@ def filter(x, window, order):
     return smoothed
 
 
-def get_data(sector_name):
+def get_data(sector_name,date):
     ma5 = get_index_data(sector_name,'FD',n=2000,freq=Interval.in_daily)
     ma20 = get_index_data(sector_name,'TW',n=2000,freq=Interval.in_daily)
     ma50 = get_index_data(sector_name,'FI',n=2000,freq=Interval.in_daily)
