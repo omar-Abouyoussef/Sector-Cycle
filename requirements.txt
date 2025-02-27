@@ -1,0 +1,8 @@
+numpy
+pandas
+scipy
+streamlit
+factor_analyzer
+plotly
+retry
+git+https://github.com/rongardF/tvdatafeed.git
