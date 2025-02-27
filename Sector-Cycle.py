@@ -31,11 +31,11 @@ def filter(x, window, order):
 
 
 def get_data(sector_name,date):
-    ma5 = get_index_data(sector_name,'FD',n=2000,freq=Interval.in_daily,date)
-    ma20 = get_index_data(sector_name,'TW',n=2000,freq=Interval.in_daily,date)
-    ma50 = get_index_data(sector_name,'FI',n=2000,freq=Interval.in_daily,date)
-    ma100 = get_index_data(sector_name,'OH',n=2000,freq=Interval.in_daily,date)
-    ma200 = get_index_data(sector_name,'TH',n=2000,freq=Interval.in_daily,date)
+    ma5 = get_index_data(sector_name,'FD',n=2000,freq=Interval.in_daily,date=date)
+    ma20 = get_index_data(sector_name,'TW',n=2000,freq=Interval.in_daily,date=date)
+    ma50 = get_index_data(sector_name,'FI',n=2000,freq=Interval.in_daily,date=date)
+    ma100 = get_index_data(sector_name,'OH',n=2000,freq=Interval.in_daily,date=date)
+    ma200 = get_index_data(sector_name,'TH',n=2000,freq=Interval.in_daily,date=date)
 
     return ma5, ma20, ma50, ma100, ma200
 
