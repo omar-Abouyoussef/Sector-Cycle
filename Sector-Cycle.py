@@ -64,7 +64,7 @@ def factor_model(df):
 
 def plot(factors):
     
-    series = zscore(savgol_filter((factors*-1),window_length=5,polyorder=1))
+    series = zscore(savgol_filter((factors*-1),window_length=3,polyorder=1))
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(
