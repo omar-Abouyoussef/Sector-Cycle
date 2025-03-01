@@ -86,7 +86,7 @@ def main(sector_name):
     df_smoothed = preprocessing(ma5, ma20, ma50, ma100, ma200,filter_window=30,filter_polyorder=3)
     factors = factor_model(df=df_smoothed)
     fig = plot(factors=factors)
-    return fig
+    return fig, factors
 
 
 class App():
@@ -102,9 +102,8 @@ class App():
                      )
 
         self.sector = sector_symbol
-        fig = main(self.sector)
+        fig, factors = main(self.sector)
         st.plotly_chart(fig)
     
 app = App()
 app.run()
-
