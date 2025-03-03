@@ -57,19 +57,19 @@ def preprocessing(ma5, ma20, ma50, ma100, ma200, filter_window=30,filter_polyord
 def factor_model(df):
     
     cfa = FactorAnalyzer(1, rotation = None, method='minres').fit(df.values)
-    factors = pd.DataFrame(cfa.transform(df),
+    factor = pd.DataFrame(cfa.transform(df),
                        index = df.index)
     
-    return factors
+    return factor
 
-def plot(factors):
+def plot(factor):
     
-    series = zscore(factors*-1).sum(axis=1)
+    series = zscore(factor*-1).sum(axis=1)
 
     
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=factors.index, y=series,mode='lines',line=dict(color='black', width=1)))
+        x=factor.index, y=series,mode='lines',line=dict(color='black', width=1)))
     
     fig.update_layout(
     title=dict(text="Sector Cycle"))
@@ -84,9 +84,11 @@ def main(sector_name):
     date = dt.today().date()
     ma5, ma20, ma50, ma100, ma200 = get_data(sector_name=sector_name,date=date)
     df_smoothed = preprocessing(ma5, ma20, ma50, ma100, ma200,filter_window=30,filter_polyorder=3)
-    factors = factor_model(df=df_smoothed)
-    fig = plot(factors=factors)
-    return fig, factors
+    factor = factor_model(df=df_smoothed)
+    fig = plot(factor=factor)
+    return fig, factor
+
+
 
 
 class App():
