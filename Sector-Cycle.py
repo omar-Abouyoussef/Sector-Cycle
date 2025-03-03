@@ -59,6 +59,7 @@ def factor_model(df):
     cfa = FactorAnalyzer(1, rotation = None, method='minres').fit(df.values)
     factor = pd.DataFrame(cfa.transform(df),
                        index = df.index)
+    factor.columns=['Factor']
     
     return factor
 
