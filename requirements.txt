@@ -9,3 +9,4 @@ retry
 git+https://github.com/rongardF/tvdatafeed.git
 pyfolio-reloaded
 backtrader
+Sector_Cycle
