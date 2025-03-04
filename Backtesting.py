@@ -8,6 +8,7 @@ from retry import retry
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
+import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from Sector_Cycle import main
 import pyfolio as pf
@@ -42,13 +43,19 @@ def getUSETFdata(etf:str,n:int,freq:str,date):
 
 
 date = dt.today().date()
-sector = 'SU'
+sector_symbol = st.selectbox(label='Sector:',
+                     options=['MM', 'SB', 'SE', 'SF', 'SI', 'SK', 'SL', 'SP', 'SS', 'SU', 'SV', 'SY'],
+                     key='sector_symbol'
+                     )
 
+sector_etf = {'MM':'SPY','SB':'XLB','SE':'XLE',
+              'SF':'XLF','SI':'XLI','SK':'XLK',
+              'SL':'XLC','SP':'XLP','SS':'XLRE',
+              'SU':'XLU', 'SV':'XLV', 'SY':'XLY'}
 
-sector_etf = {'SU':'XLU', 'SI':'XLI'}
-fig, factor = main(sector)
-etf = getUSETFdata(etf=sector_etf[sector],n=2000,freq='Daily',date=date)
-etf.name = sector_etf[sector]
+fig, factor = main(sector_symbol)
+etf = getUSETFdata(etf=sector_etf[sector_symbol],n=2000,freq='Daily',date=date)
+etf.name = sector_etf[sector_symbol]
 
 etf.index = pd.to_datetime(etf.index.date)
 factor.index = pd.to_datetime(factor.index.date)
@@ -56,19 +63,6 @@ etf.to_csv('etf.csv')
 factor.to_csv('factor.csv')
 
 
-
-
-import backtrader as bt
-import backtrader.feeds as btfeeds
-import pandas as pd
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
-# -----------------------
-# Strategy Definition
-# -----------------------
-import backtrader as bt
-import backtrader.feeds as btfeeds
 
 class FactorStrategy(bt.Strategy):
     # slope_threshold can be adjusted to ignore very small changes
