@@ -168,6 +168,10 @@ strategy_instance = results[0]
 trade_signals = strategy_instance.trade_signals
 pyfolio = results[0].analyzers.getbyname('pyfolio')
 returns, positions, transactions, gross_lev = pyfolio.get_pf_items()
+st.session_state.returns = returns
+st.session_state.positions = positions
+st.session_state.transactions = transactions
+st.session_state.gross_lev = gross_lev
 
 
 # -----------------------
