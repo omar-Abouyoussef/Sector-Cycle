@@ -8,7 +8,7 @@ from retry import retry
 from factor_analyzer import FactorAnalyzer, ConfirmatoryFactorAnalyzer, ModelSpecificationParser
 from scipy.signal import savgol_filter 
 from scipy.stats import zscore
-import streamlit as st
+# import streamlit as st
 
 
 
@@ -92,21 +92,21 @@ def main(sector_name):
 
 
 
-class App():
-    def __init__(self):
-        pass
+# class App():
+#     def __init__(self):
+#         pass
 
-    def run(self):
+#     def run(self):
         
-        st.set_page_config(layout="wide", page_title='Sector Cycle Experimental')
-        sector_symbol = st.selectbox(label='Sector:',
-                     options=['MM', 'SB', 'SE', 'SF', 'SI', 'SK', 'SL', 'SP', 'SS', 'SU', 'SV', 'SY'],
-                     key='sector_symbol'
-                     )
+#         st.set_page_config(layout="wide", page_title='Sector Cycle Experimental')
+#         sector_symbol = st.selectbox(label='Sector:',
+#                      options=['MM', 'SB', 'SE', 'SF', 'SI', 'SK', 'SL', 'SP', 'SS', 'SU', 'SV', 'SY'],
+#                      key='sector_symbol'
+#                      )
 
-        self.sector = sector_symbol
-        fig, factors = main(self.sector)
-        st.plotly_chart(fig)
+#         self.sector = sector_symbol
+#         fig, factors = main(self.sector)
+#         st.plotly_chart(fig)
     
-app = App()
-app.run()
+# app = App()
+# app.run()
