@@ -61,7 +61,7 @@ def factor_model(df):
                        index = df.index)
     factor.columns=['Factor']
     
-    return factor
+    return factor*-1
 
 def plot(factor):
     
