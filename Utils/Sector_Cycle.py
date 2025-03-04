@@ -65,7 +65,7 @@ def factor_model(df):
 
 def plot(factor):
     
-    series = zscore(factor*-1).sum(axis=1)
+    series = zscore(factor).sum(axis=1)
 
     
     fig = go.Figure()
