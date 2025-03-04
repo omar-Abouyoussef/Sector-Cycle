@@ -251,6 +251,8 @@ fig.update_layout(
     hovermode='x unified', hoversubplots="single"
 )
 
+fig.add_hline(y=-1.27, row=2,col=1)
+fig.add_hline(y=1.27, row=2,col=1)
 
 st.plotly_chart(fig)
 
