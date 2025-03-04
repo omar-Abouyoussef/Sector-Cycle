@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from Sector_Cycle import main
+from Utils.Sector_Cycle import main
 import pyfolio as pf
 import plotly.tools as tls
 import streamlit as st
