@@ -1,3 +1,7 @@
+import pyfolio as pf
+import streamlit as st
+import pandas as pd
+
 st.write(pf.create_full_tear_sheet(
     returns=st.session_state.returns,
     transactions=st.session_state.transactions,
